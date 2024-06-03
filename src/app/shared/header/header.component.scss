@@ -1,0 +1,15 @@
+.header {
+  &-wrapper {
+    width: 100vw;
+    background-color: var(--primary);
+    padding: 2% 1%;
+  }
+  &-title {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    .headline {
+      color: white;
+    }
+  }
+}

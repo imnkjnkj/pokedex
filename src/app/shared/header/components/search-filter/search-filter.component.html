@@ -1,0 +1,13 @@
+<div class="filter-wrapper">
+  <app-input
+    [placeholder]="'Search by name'"
+    [leftIcon]="'/assets/images/search-red.svg'"
+    [value]="searchValue"
+    (valueChange)="searchValue = $event"
+  ></app-input>
+  <app-drop-down
+    [options]="sortOptions"
+    [defaultValue]="selectedSort"
+    (selectedItemsChange)="selectedSort = $event"
+  ></app-drop-down>
+</div>

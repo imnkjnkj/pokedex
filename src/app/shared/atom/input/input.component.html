@@ -1,0 +1,9 @@
+<div class="input-wrapper">
+  <img class="icon-left" *ngIf="leftIcon.length" [src]="leftIcon" alt="leftIcon" />
+  <input
+    [placeholder]="placeholder"
+    [value]="value"
+    (input)="updateValue($event)"
+  />
+  <img class="icon-right" *ngIf="rightIcon.length" [src]="rightIcon" alt="rightIcon" />
+</div>

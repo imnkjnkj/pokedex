@@ -1,0 +1,36 @@
+.input-wrapper {
+  position: relative;
+  width: 100%;
+
+  input {
+    padding: 0.5rem 1rem;
+    border-radius: 16px;
+    box-shadow: var(--drop-inner-2dp);
+    outline: none;
+    border: none;
+  }
+  img {
+    width: 16px;
+    height: 16px;
+  }
+  .icon {
+    &-left {
+      position: absolute;
+      left: 10px; /* Adjust as needed */
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &-right {
+      position: absolute;
+      right: 10px; /* Adjust as needed */
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+.input-wrapper:has(.icon-left) input {
+  padding-left: 36px !important;
+}
+.input-wrapper:has(.icon-right) input {
+  padding-right: 36px;
+}

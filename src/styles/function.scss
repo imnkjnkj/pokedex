@@ -1,0 +1,8 @@
+@mixin fontSetup($color, $fontSize, $lineHeight, $fontStyle, $fontWeight) {
+  color: $color;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  font-style: $fontStyle;
+  font-weight: $fontWeight;
+}
+
