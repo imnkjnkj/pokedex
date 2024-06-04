@@ -1,0 +1,17 @@
+<ngx-select-dropdown
+  (searchChange)="searchChange($event)"
+  tabindex="0"
+  [multiple]="multiple"
+  [(ngModel)]="selectedOption"
+  [config]="config"
+  [options]="options"
+  [optionItemTemplate]="optionTemplate"
+  [selectedItemTemplate]="optionTemplate"
+  (change)="updateSelectedOptions()"
+></ngx-select-dropdown>
+
+<ng-template #optionTemplate let-item="item" let-config="config">
+  <div class="option-wrapper">
+    {{ item.displayValue }}
+  </div>
+</ng-template>

@@ -1,9 +1,15 @@
 .filter {
   &-wrapper {
+    height: 32px;
     display: flex;
     gap: 1rem;
-    :ng-deep app-input{
-        width: 30%;
+    ::ng-deep {
+      app-input {
+        width: 20%;
+      }
+      single-dropdown {
+        width: 10%;
+      }
     }
   }
 }

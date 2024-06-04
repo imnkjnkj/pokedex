@@ -5,9 +5,8 @@
     [value]="searchValue"
     (valueChange)="searchValue = $event"
   ></app-input>
-  <app-drop-down
+  <single-dropdown
     [options]="sortOptions"
-    [defaultValue]="selectedSort"
-    (selectedItemsChange)="selectedSort = $event"
-  ></app-drop-down>
+    (selectedOptionsChange)="selectedSort = $event"
+  ></single-dropdown>
 </div>

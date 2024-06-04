@@ -62,3 +62,13 @@ a {
 .caption {
   @include fontSetup(var(--gray-dark), 8px, 12px, normal, 500);
 }
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-medium);
+  opacity: 0.12;
+  border-radius: 6px;
+
+}

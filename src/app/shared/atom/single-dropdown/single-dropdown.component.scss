@@ -1,0 +1,16 @@
+:host ::ng-deep {
+  ngx-select-dropdown {
+    .ngx-dropdown-container {
+      height: 100%;
+      div {
+        height: 100%;
+      }
+    }
+    .ngx-dropdown-list-container {
+      height: fit-content !important;
+    }
+  }
+}
+.option-wrapper {
+  text-align: center;
+}
