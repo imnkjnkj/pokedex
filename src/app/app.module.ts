@@ -8,6 +8,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/header/header.component';
+import { ApiService } from './services/api.service';
+import { PokemonCardComponent } from './home/components/pokemon-card/pokemon-card.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { DetailModalComponent } from './home/components/detail-modal/detail-modal.component';
 
 @NgModule({
   imports: [
@@ -17,9 +21,11 @@ import { HeaderComponent } from './shared/header/header.component';
     CommonModule,
     RouterOutlet,
     HttpClientModule,
+    ScrollingModule
   ],
-  declarations: [AppComponent, HomeComponent],
-  exports: [],
+  declarations: [AppComponent, HomeComponent, PokemonCardComponent, DetailModalComponent],
+  providers: [ApiService],
+  exports: [HomeComponent, PokemonCardComponent, DetailModalComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

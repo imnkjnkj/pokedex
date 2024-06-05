@@ -1,4 +1,8 @@
+export interface IOptionType {
+  id: string | number;
+  name: string;
+}
 export interface IOption {
-  value: string;
-  displayValue: string;
+  id: string;
+  name: string;
 }

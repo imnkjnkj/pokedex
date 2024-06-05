@@ -1,0 +1,28 @@
+<div class="card-wrapper">
+  <div class="card-image">
+    <img
+      [src]="
+        pokemonData.imgUrl
+          ? pokemonData.imgUrl
+          : '/assets/images/default-img.svg'
+      "
+      alt="pokemon image"
+    />
+  </div>
+  <div class="card-content">
+    <div class="card-title subtitle-2">
+      <span class="card-title-text">{{ pokemonData.name }}</span>
+      <span
+        class="card-title-badge subtitle-3"
+        [style.background-color]="colorTypePokemon(pokemonData.type_1)"
+        >{{ homeService.generateTypePokemon(pokemonData.type_1) }}</span
+      >
+      <span
+        *ngIf="pokemonData.type_2"
+        class="card-title-badge subtitle-3"
+        [style.background-color]="colorTypePokemon(pokemonData.type_2)"
+        >{{ homeService.generateTypePokemon(pokemonData.type_2) }}</span
+      >
+    </div>
+  </div>
+</div>

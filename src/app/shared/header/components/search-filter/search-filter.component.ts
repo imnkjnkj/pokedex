@@ -1,5 +1,11 @@
+import { HomeService } from '@/app/home/home-filter.service';
+import {
+  SORT_DIRECTION_OPTIONS,
+  SORT_TYPE_OPTIONS,
+} from '@/app/shared/constants/header.constants';
 import { IOption } from '@/app/shared/types/common.interface';
 import { Component, OnInit } from '@angular/core';
+import { HeaderService } from '../../header.service';
 
 @Component({
   selector: 'search-filter',
@@ -8,43 +14,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchFilterComponent implements OnInit {
   public searchValue: string = '';
-  public sortOptions: IOption[] = [
-    {
-      value: 'name',
-      displayValue: 'name',
-    },
-    {
-      value: 'total',
-      displayValue: 'total',
-    },
-    {
-      value: 'hp',
-      displayValue: 'hp',
-    },
-    {
-      value: 'attack',
-      displayValue: 'attack',
-    },
-    {
-      value: 'defense',
-      displayValue: 'defense',
-    },
-    {
-      value: 'sp_atk',
-      displayValue: 'sp_atk',
-    },
-    {
-      value: 'sp_def',
-      displayValue: 'sp_def',
-    },
-    {
-      value: 'speed',
-      displayValue: 'speed',
-    },
-  ];
-  public selectedSort?: IOption;
-  public sortDirection: string = 'asc';
-  constructor() {}
+  public sortOptions = SORT_TYPE_OPTIONS;
+  public sortDirectionOptions = SORT_DIRECTION_OPTIONS;
+  public selectedSort?: IOption = SORT_TYPE_OPTIONS[0];
+  public selectedSortDirection?: IOption = SORT_DIRECTION_OPTIONS[0];
+  public typeOptions: IOption[] = [];
+  public selectedTypeOption?: IOption;
 
-  ngOnInit() {}
+  constructor(
+    private HomeService: HomeService,
+    private headerService: HeaderService
+  ) {}
+
+  ngOnInit() {
+    this.getTypeOptionsData();
+  }
+
+  getTypeOptionsData() {
+    this.headerService.typeOptions$.subscribe((data) => {
+      this.typeOptions = data;
+    });
+  }
+
+  onChangeSortType(selectedSort: IOption) {
+    this.selectedSort = selectedSort;
+    this.HomeService.setSelectedFilter({ sort: selectedSort.id });
+  }
+
+  onChangeSortDir(selectedSortDirection: IOption) {
+    this.selectedSortDirection = selectedSortDirection;
+    this.HomeService.setSelectedFilter({ dir: selectedSortDirection.id });
+  }
+
+  onChangeType(selectedTypeOption: IOption) {
+    this.selectedTypeOption = selectedTypeOption;
+    this.HomeService.setSelectedFilter({ type: selectedTypeOption.id });
+  }
 }

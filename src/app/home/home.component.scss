@@ -1,8 +1,20 @@
 .home {
-    &-wrapper{
-        background-color: white;
-        box-shadow: var(--drop-inner-2dp);
-        padding: 24px 12px;
-        border-radius: 8px;
-    }
+  &-wrapper {
+    background-color: white;
+    box-shadow: var(--drop-inner-2dp);
+    padding: 24px 12px;
+    border-radius: 8px;
+    overflow: auto;
+  }
+}
+::ng-deep{
+  .cdk-virtual-scroll-content-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    justify-content: center;
+  }
+  .cdk-virtual-scroll-content-wrapper{
+    padding: 5px;
+  }
 }

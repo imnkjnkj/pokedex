@@ -1,12 +1,31 @@
 <div class="filter-wrapper">
-  <app-input
+  <!-- <app-input
     [placeholder]="'Search by name'"
     [leftIcon]="'/assets/images/search-red.svg'"
     [value]="searchValue"
     (valueChange)="searchValue = $event"
-  ></app-input>
-  <single-dropdown
-    [options]="sortOptions"
-    (selectedOptionsChange)="selectedSort = $event"
-  ></single-dropdown>
+  ></app-input> -->
+  <div class="sort-dropdown">
+    <single-dropdown
+      [options]="sortOptions"
+      [placeholder]="'Sort by...'"
+      [selectedOption]="selectedSort"
+      (selectedOptionsChange)="onChangeSortType($event)"
+    ></single-dropdown>
+  </div>
+  <div class="dir-dropdown">
+    <single-dropdown
+      [options]="sortDirectionOptions"
+      [selectedOption]="selectedSortDirection"
+      (selectedOptionsChange)="onChangeSortDir($event)"
+    ></single-dropdown>
+  </div>
+  <div class="type-dropdown">
+    <single-dropdown
+      [options]="typeOptions"
+      [placeholder]="'Filter by type'"
+      [selectedOption]="selectedTypeOption"
+      (selectedOptionsChange)="onChangeType($event)"
+    ></single-dropdown>
+  </div>
 </div>

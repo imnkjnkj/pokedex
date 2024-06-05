@@ -3,12 +3,19 @@
     height: 32px;
     display: flex;
     gap: 1rem;
+    width: 100%;
     ::ng-deep {
       app-input {
-        width: 20%;
+        flex: 2;
       }
-      single-dropdown {
-        width: 10%;
+      .sort-dropdown {
+        flex: 0.9;
+      }
+      .dir-dropdown {
+        flex: 0.7;
+      }
+      .type-dropdown {
+        flex: 1.2;
       }
     }
   }

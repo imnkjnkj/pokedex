@@ -1,7 +1,7 @@
 <ngx-select-dropdown
   (searchChange)="searchChange($event)"
   tabindex="0"
-  [multiple]="multiple"
+  [multiple]="false"
   [(ngModel)]="selectedOption"
   [config]="config"
   [options]="options"
@@ -12,6 +12,6 @@
 
 <ng-template #optionTemplate let-item="item" let-config="config">
   <div class="option-wrapper">
-    {{ item.displayValue }}
+    {{ item.name }}
   </div>
 </ng-template>

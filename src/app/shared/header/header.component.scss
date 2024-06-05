@@ -3,6 +3,11 @@
     width: 100vw;
     background-color: var(--primary);
     padding: 2% 1%;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
   }
   &-title {
     display: flex;
@@ -10,6 +15,26 @@
     margin-bottom: 0.5rem;
     .headline {
       color: white;
+    }
+  }
+}
+::ng-deep {
+  search-filter {
+    width: 55%;
+  }
+}
+@media (max-width: 768px) {
+  .header-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2% 5%;
+  }
+  .header-title {
+    margin-bottom: 1rem;
+  }
+  ::ng-deep {
+    search-filter {
+      width: 100%;
     }
   }
 }

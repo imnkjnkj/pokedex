@@ -8,6 +8,7 @@ body {
   margin: 0;
   background-color: var(--primary);
   padding: 0 1%;
+  overflow: hidden;
 }
 * {
   box-sizing: border-box;
@@ -63,12 +64,12 @@ a {
   @include fontSetup(var(--gray-dark), 8px, 12px, normal, 500);
 }
 ::-webkit-scrollbar {
-  width: 5px;
+  height: 4px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--gray-medium);
   opacity: 0.12;
   border-radius: 6px;
-
 }

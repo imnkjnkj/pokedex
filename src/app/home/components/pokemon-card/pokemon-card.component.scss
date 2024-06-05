@@ -1,0 +1,39 @@
+.card {
+  &-wrapper {
+    width: 232px;
+    border-radius: 1rem;
+    box-shadow: var(--drop-shadow-2dp);
+    cursor: pointer;
+    padding: 16px;
+    position: relative;
+    background-image: url(/assets/images/bg-card.svg);
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-size: contain;
+  }
+  &-image img {
+    width: 100%;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  &-content {
+    position: relative;
+  }
+  &-title {
+    text-align: center;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+
+    &-badge {
+      padding: 2px 8px;
+      border-radius: 10px;
+      color: white;
+    }
+  }
+  &-wrapper:hover {
+    box-shadow: 1px 1px 3px 1px var(--primary);
+  }
+}

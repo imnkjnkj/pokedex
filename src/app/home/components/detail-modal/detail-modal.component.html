@@ -1,0 +1,57 @@
+<app-modal [show]="show">
+  <div class="modal-header">
+    <div class="close-button" (click)="onCloseModal()">
+      <img src="/assets/images/close.svg" alt="close button" />
+    </div>
+    <h1>{{ pokemonData.name }}</h1>
+  </div>
+  <div class="modal-content">
+    <img
+      [src]="
+        pokemonData.imgUrl
+          ? pokemonData.imgUrl
+          : '/assets/images/default-img.svg'
+      "
+      alt="sprite"
+    />
+    <div class="type">
+      <span
+        class="type-badge subtitle-3"
+        [style.background-color]="colorTypePokemon(pokemonData.type_1)"
+        >{{ homeService.generateTypePokemon(pokemonData.type_1) }}</span
+      >
+      <span
+        *ngIf="pokemonData.type_2"
+        class="type-badge subtitle-3"
+        [style.background-color]="colorTypePokemon(pokemonData.type_2)"
+        >{{ homeService.generateTypePokemon(pokemonData.type_2) }}</span
+      >
+    </div>
+    <div class="about">
+      <span class="about-badge subtitle-3" *ngIf="pokemonData.attack">
+        <span class="body-1">ATK</span>
+        <span class="subtitle-2">{{ pokemonData.attack }}</span>
+      </span>
+      <span class="about-badge subtitle-3" *ngIf="pokemonData.hp">
+        <span class="body-1">HP</span>
+        <span class="subtitle-2">{{ pokemonData.hp }}</span>
+      </span>
+      <span class="about-badge subtitle-3" *ngIf="pokemonData.defense">
+        <span class="body-1">DEF</span>
+        <span class="subtitle-2">{{ pokemonData.defense }}</span>
+      </span>
+      <span class="about-badge subtitle-3" *ngIf="pokemonData.sp_atk">
+        <span class="body-1">SATK</span>
+        <span class="subtitle-2">{{ pokemonData.sp_atk }}</span>
+      </span>
+      <span class="about-badge subtitle-3" *ngIf="pokemonData.sp_def">
+        <span class="body-1">SDEF</span>
+        <span class="subtitle-2">{{ pokemonData.sp_def }}</span>
+      </span>
+      <span class="about-badge subtitle-3" *ngIf="pokemonData.speed">
+        <span class="body-1">SPD</span>
+        <span class="subtitle-2">{{ pokemonData.speed }}</span>
+      </span>
+    </div>
+  </div>
+</app-modal>

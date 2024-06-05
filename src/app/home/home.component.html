@@ -2,7 +2,26 @@
   <spinner></spinner>
 </ng-container>
 
-<div class="home-wrapper">
-  HOME PAGE
+<div class="home-wrapper" *ngIf="!isLoading">
+  <div class="home-data">
+    <cdk-virtual-scroll-viewport
+      itemSize="10"
+      (scroll)="onScroll()"
+      [style.height]="'calc(100vh - 160px)'"
+    >
+      <div *cdkVirtualFor="let item of pokemonsData">
+        <pokemon-card
+          (click)="onClickPokemonCard(item.id)"
+          [pokemonData]="item"
+        ></pokemon-card>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
 </div>
 
+<detail-modal
+  [show]="showModal"
+  (closeModal)="showModal = $event"
+  [pokemonData]="currentData"
+>
+</detail-modal>
