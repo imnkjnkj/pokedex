@@ -2,8 +2,8 @@ import { IOption } from '../types/common.interface';
 
 export const SORT_TYPE_OPTIONS: IOption[] = [
   {
-    id: 'name',
-    name: 'Name',
+    id: 'number',
+    name: 'Number',
   },
   {
     id: 'total',

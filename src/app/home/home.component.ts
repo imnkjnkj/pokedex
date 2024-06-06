@@ -28,9 +28,10 @@ export class HomeComponent implements OnInit {
   isScrolledToBottom = false;
   showModal = false;
   currentData: IData = {} as IData;
+  isFilterListOfFiles = false;
 
   constructor(
-    private HomeService: HomeService,
+    private homeService: HomeService,
     private headerService: HeaderService
   ) {}
 
@@ -53,7 +54,7 @@ export class HomeComponent implements OnInit {
       !this.isScrolledToBottom
     ) {
       this.isScrolledToBottom = true;
-      this.HomeService.refreshDataParams({
+      this.homeService.refreshDataParams({
         number: this.currentMeta.currentPage + 1,
       });
     } else if (distanceFromBottom >= 58 && this.isScrolledToBottom) {
@@ -66,7 +67,7 @@ export class HomeComponent implements OnInit {
   }
 
   getDetailPokemon(id: string) {
-    combineLatest([this.HomeService.getDetailDataApi(id)]).subscribe(
+    combineLatest([this.homeService.getDetailDataApi(id)]).subscribe(
       ([detailData]) => {
         this.currentData = {
           ...detailData,
@@ -80,7 +81,7 @@ export class HomeComponent implements OnInit {
   getApi() {
     combineLatest([
       this.headerService.getTypeOptionsApi(),
-      this.HomeService.selectedFilter$,
+      this.homeService.selectedFilter$,
     ])
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(([typeOptions, filter]) => {
@@ -94,26 +95,37 @@ export class HomeComponent implements OnInit {
             filter?.dir === ESortDric.DESC ? `-${filter?.sort}` : filter?.sort,
           type: filter?.type?.toString() || '',
         };
-        this.HomeService.refreshDataParams(params);
+        this.homeService.refreshDataParams(params);
+        this.isFilterListOfFiles = Boolean(filter.sort || filter.type);
       });
   }
 
   getAllDataApi() {
-    this.HomeService.getAllDataApi()
+    this.homeService
+      .getAllDataApi()
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res) => {
         const { data, meta } = res;
-        this.pokemonsData = [...this.pokemonsData, ...data].map((item) => ({
-          ...item,
-          imgUrl: `${BASE_URL}pokemons/${item.id}/sprite`,
-        }));
         this.currentMeta = {
           currentPage: meta.current_page,
           totalPage: meta.last_page,
           totalData: meta.total,
         };
         this.isLoading = false;
+        if (this.isFilterListOfFiles) {
+          this.pokemonsData = this.mapData(data);
+          this.isFilterListOfFiles = false;
+        } else {
+          this.pokemonsData = this.mapData([...this.pokemonsData, ...data]);
+        }
       });
+  }
+
+  mapData(data: IData[]) {
+    return data.map((item) => ({
+      ...item,
+      imgUrl: `${BASE_URL}pokemons/${item.id}/sprite`,
+    }));
   }
 
   ngOnDestroy(): void {

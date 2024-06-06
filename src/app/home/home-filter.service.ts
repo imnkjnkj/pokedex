@@ -17,7 +17,7 @@ import { HeaderService } from '../shared/header/header.service';
 })
 export class HomeService {
   private selectedFilter = new BehaviorSubject<IFilter>({
-    sort: 'name',
+    sort: 'number',
     dir: 'asc',
   });
   private getDataParams$ = new BehaviorSubject<IDataBody>({
